@@ -1,0 +1,133 @@
+{
+	// Configuración de Dev Container para plantilla fullstack multiservicio
+	// Este archivo define cómo VS Code configurará el entorno de desarrollo
+	"name": "Plantilla Fullstack Multiservicio",
+	
+	// Usar Docker Compose para configurar múltiples servicios
+	// Permite trabajar con frontend y backend simultáneamente
+	"dockerComposeFile": "../docker-compose.yml",
+	
+	// Servicios que se ejecutarán cuando se abra el Dev Container
+	// Solo levantamos frontend y backend (las BDs se pueden activar después)
+	"runServices": ["frontend", "backend"],
+	
+	// Servicio principal donde VS Code se conectará
+	// El desarrollo principal se hará desde el contenedor del backend
+	"service": "backend",
+	
+	// Directorio de trabajo dentro del contenedor
+	// Se mapea al directorio raíz del proyecto
+	"workspaceFolder": "/app",
+	
+	// Mapeo de puertos para acceso desde el host
+	// Estos puertos estarán disponibles automáticamente
+	"forwardPorts": [
+		3000,  // Puerto del backend (API)
+		5173   // Puerto del frontend (Vite dev server)
+	],
+	
+	// Etiquetas descriptivas para los puertos en la UI de VS Code
+	"portsAttributes": {
+		"3000": {
+			"label": "Backend API",
+			"onAutoForward": "notify"
+		},
+		"5173": {
+			"label": "Frontend Dev Server",
+			"onAutoForward": "openBrowser"
+		}
+	},
+	
+	// Extensiones de VS Code que se instalarán automáticamente
+	// Incluye herramientas para desarrollo fullstack
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				// Extensiones para desarrollo general
+				"ms-vscode.vscode-json",
+				"redhat.vscode-yaml",
+				"ms-vscode.vscode-eslint",
+				"esbenp.prettier-vscode",
+				"bradlc.vscode-tailwindcss",
+				
+				// Extensiones para TypeScript/JavaScript
+				"ms-vscode.vscode-typescript-next",
+				"ms-vscode.vscode-json",
+				"dbaeumer.vscode-eslint",
+				
+				// Extensiones para React
+				"ms-vscode.vscode-react-refactor",
+				"formulahendry.auto-rename-tag",
+				"ms-vscode.vscode-html-css-support",
+				
+				// Extensiones para Node.js y backend
+				"ms-vscode.vscode-node-debug2",
+				"christian-kohler.npm-intellisense",
+				
+				// Extensiones para Docker
+				"ms-azuretools.vscode-docker",
+				
+				// Extensiones para bases de datos
+				"ms-mssql.mssql",
+				"mongodb.mongodb-vscode",
+				
+				// Extensiones para control de versiones
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				
+				// Extensiones de productividad
+				"ms-vscode.vscode-todo-highlight",
+				"gruntfuggly.todo-tree",
+				"ms-vscode.vscode-thunder-client"
+			],
+			
+			// Configuración específica de VS Code para el proyecto
+			"settings": {
+				"typescript.preferences.importModuleSpecifier": "relative",
+				"editor.formatOnSave": true,
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": true
+				},
+				"files.exclude": {
+					"**/node_modules": true,
+					"**/dist": true,
+					"**/.git": true
+				},
+				"search.exclude": {
+					"**/node_modules": true,
+					"**/dist": true
+				}
+			}
+		}
+	},
+	
+	// Comando que se ejecuta después de crear el contenedor
+	// Instala las dependencias de ambos proyectos
+	"postCreateCommand": "cd /app/frontend && pnpm install && cd /app/backend && pnpm install",
+	
+	// Comando que se ejecuta después de iniciar el contenedor
+	// Mantiene el contenedor corriendo y listo para desarrollo
+	"postStartCommand": "echo 'Dev Container listo para desarrollo'",
+	
+	// Configuraciones de montaje de volúmenes
+	// Mantiene node_modules en volúmenes para mejor rendimiento
+	"mounts": [
+		"source=frontend-node_modules,target=/app/frontend/node_modules,type=volume",
+		"source=backend-node_modules,target=/app/backend/node_modules,type=volume"
+	],
+	
+	// Usuario que ejecutará los comandos dentro del contenedor
+	// Usa el usuario root para evitar problemas de permisos en desarrollo
+	"remoteUser": "root",
+	
+	// Configuración de características adicionales
+	// Habilita herramientas útiles para el desarrollo
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"version": "latest"
+		}
+	}
+}

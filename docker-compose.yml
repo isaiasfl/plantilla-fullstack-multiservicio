@@ -1,0 +1,105 @@
+# Docker Compose para plantilla fullstack multiservicio
+# Configuración lista para desarrollo con hot reload
+
+# Definición de servicios
+services:
+  # Servicio Frontend - React + Vite + TypeScript
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: plantilla_frontend
+    ports:
+      - "5173:5173"  # Puerto Vite por defecto
+    volumes:
+      # Montaje de código fuente para hot reload
+      - ./frontend:/app
+      # Excluir node_modules del montaje (usar volumen anónimo)
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      # Variable para conectar con backend
+      - VITE_API_URL=http://localhost:3000
+    depends_on:
+      - backend
+    networks:
+      - devnet
+    # Comando para desarrollo con hot reload
+    command: pnpm run dev
+
+  # Servicio Backend - Node.js + Express + TypeScript
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: plantilla_backend
+    ports:
+      - "3000:3000"  # Puerto Express por defecto
+    volumes:
+      # Montaje de código fuente para hot reload
+      - ./backend:/app
+      # Excluir node_modules del montaje
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      # Variables de base de datos (comentadas hasta que se necesiten)
+      # - MONGODB_URI=mongodb://mongo:27017/plantilla_db
+      # - POSTGRES_URL=postgresql://user:password@postgres:5432/plantilla_db
+      # - DATABASE_URL=file:./dev.db
+    networks:
+      - devnet
+    # Comando para desarrollo con hot reload
+    command: pnpm run dev
+
+  # Base de datos MongoDB (comentada por defecto)
+  # Descomenta este servicio cuando necesites usar MongoDB
+  # mongo:
+  #   image: mongo:7
+  #   container_name: plantilla_mongo
+  #   restart: unless-stopped
+  #   ports:
+  #     - "27017:27017"
+  #   environment:
+  #     - MONGO_INITDB_ROOT_USERNAME=admin
+  #     - MONGO_INITDB_ROOT_PASSWORD=admin123
+  #     - MONGO_INITDB_DATABASE=plantilla_db
+  #   volumes:
+  #     - mongo_data:/data/db
+  #   networks:
+  #     - devnet
+
+  # Base de datos PostgreSQL (comentada por defecto)
+  # Descomenta este servicio cuando necesites usar PostgreSQL
+  # postgres:
+  #   image: postgres:15
+  #   container_name: plantilla_postgres
+  #   restart: unless-stopped
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_DB=plantilla_db
+  #     - POSTGRES_USER=user
+  #     - POSTGRES_PASSWORD=password
+  #   volumes:
+  #     - postgres_data:/var/lib/postgresql/data
+  #   networks:
+  #     - devnet
+
+# Definición de redes
+networks:
+  devnet:
+    driver: bridge
+    name: plantilla_network
+
+# Definición de volúmenes persistentes
+volumes:
+  # Volúmenes para bases de datos (comentados hasta que se necesiten)
+  # Descomenta los volúmenes cuando actives las bases de datos
+  # mongo_data:
+  #   name: plantilla_mongo_data
+  # postgres_data:
+  #   name: plantilla_postgres_data
+  
+  # Placeholder para evitar error YAML (puedes eliminar esta línea al agregar volúmenes reales)
+  _placeholder: {}

@@ -1,0 +1,68 @@
+{
+  "compilerOptions": {
+    // Versión de JavaScript objetivo
+    "target": "ES2020",
+    
+    // Sistema de módulos
+    "module": "commonjs",
+    "moduleResolution": "node",
+    
+    // Librerías a incluir
+    "lib": ["ES2020"],
+    
+    // Directorio de salida
+    "outDir": "./dist",
+    "rootDir": "./src",
+    
+    // Configuración estricta de TypeScript
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    
+    // Permite importaciones por defecto de módulos sin export por defecto
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    
+    // Permite importar archivos JSON
+    "resolveJsonModule": true,
+    
+    // Genera source maps para debugging
+    "sourceMap": true,
+    
+    // Configuración de tipos
+    "types": ["node", "jest"],
+    
+    // Configuración de paths (deshabilitada por simplicidad)
+    // Puedes habilitar alias de paths agregando tsconfig-paths
+    // "baseUrl": ".",
+    // "paths": {
+    //   "@/*": ["src/*"]
+    // },
+    
+    // Otras configuraciones útiles
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,
+    "declarationMap": true
+  },
+  
+  // Archivos y directorios a incluir
+  "include": [
+    "src/**/*"
+  ],
+  
+  // Archivos y directorios a excluir
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts"
+  ],
+  
+  // Configuración específica para ts-node-dev
+  // "ts-node": {
+  //   "require": ["tsconfig-paths/register"]
+  // }
+}

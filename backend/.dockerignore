@@ -1,0 +1,60 @@
+# Archivos y directorios a excluir del contexto de Docker
+# Esto optimiza la construcción de la imagen
+
+# Dependencias (se instalan en el contenedor)
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Archivos de build y distribución
+dist
+build
+out
+
+# Archivos de caché
+.cache
+.nyc_output
+
+# Archivos de entorno (se pasan como variables)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Archivos de git
+.git
+.gitignore
+README.md
+
+# Archivos de logs
+logs
+*.log
+
+# Archivos temporales
+tmp
+temp
+
+# Archivos de cobertura de tests
+coverage
+
+# Archivos de base de datos locales
+*.db
+*.sqlite
+
+# Archivos de Docker
+Dockerfile
+.dockerignore

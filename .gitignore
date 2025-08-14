@@ -1,0 +1,157 @@
+# Gitignore global para plantilla fullstack
+# Mantiene el repositorio limpio y seguro
+
+# === ARCHIVOS DE ENTORNO Y SECRETS ===
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.env
+secrets.json
+
+# === DEPENDENCIAS ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+.pnpm-store/
+
+# === ARCHIVOS DE BUILD ===
+dist/
+build/
+out/
+.next/
+coverage/
+.cache/
+.parcel-cache/
+
+# === ARCHIVOS DE BASES DE DATOS ===
+*.db
+*.sqlite
+*.sqlite3
+data/
+pgdata/
+mongodata/
+
+# === LOGS ===
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# === ARCHIVOS TEMPORALES ===
+tmp/
+temp/
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# === ARCHIVOS DE SISTEMA OPERATIVO ===
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# === ARCHIVOS DE IDEs Y EDITORES ===
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.swp
+*.swo
+*~
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.c9revisions/
+.sublime-workspace
+.sublime-project
+
+# === ARCHIVOS DE DOCKER (opcional, dependiendo del workflow) ===
+# Descomenta si no quieres trackear estos archivos
+# .dockerignore
+# Dockerfile.prod
+
+# === ARCHIVOS DE CI/CD SENSIBLES ===
+.secrets/
+.credentials/
+
+# === ARCHIVOS DE TESTING ===
+.nyc_output/
+coverage/
+*.lcov
+.jest/
+test-results/
+playwright-report/
+test-results.xml
+
+# === ARCHIVOS DE LINTING Y FORMATTING ===
+.eslintcache
+
+# === OTROS ARCHIVOS COMUNES ===
+*.tgz
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# === ESPECÍFICOS DE MACOS ===
+.AppleDouble
+.LSOverride
+Icon
+
+# === ESPECÍFICOS DE LINUX ===
+*~
+
+# === ESPECÍFICOS DE WINDOWS ===
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# === CONFIGURACIONES LOCALES DE DESARROLLADORES ===
+.local/
+.config/local/
+.dev/
+
+# === ARCHIVOS DE BACKUP ===
+*.bak
+*.backup
+*.old
+*.orig
+
+# === CERTIFICADOS Y CLAVES (IMPORTANTE) ===
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+*.jks
+*.keystore
+
+# === ARCHIVOS DE MONITOREO Y PROFILING ===
+.profile/
+.heapdump
+*.prof
+*.cpuprofile
+
+# === ARCHIVOS ESPECÍFICOS DEL PROYECTO ===
+# Agrega aquí archivos específicos de tu proyecto
+uploads/
+public/uploads/
+storage/

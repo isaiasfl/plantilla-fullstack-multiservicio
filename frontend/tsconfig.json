@@ -1,0 +1,73 @@
+{
+  "compilerOptions": {
+    // Versión de JavaScript objetivo
+    "target": "ES2020",
+    
+    // Librerías a incluir
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    
+    // Permite importaciones por defecto de módulos sin export por defecto
+    "allowSyntheticDefaultImports": true,
+    
+    // Habilita interoperabilidad entre CommonJS y ES Modules
+    "esModuleInterop": true,
+    
+    // Permite importar archivos JSON
+    "resolveJsonModule": true,
+    
+    // Habilita decoradores experimentales
+    "experimentalDecorators": true,
+    
+    // Sistema de módulos
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    
+    // No emite archivos JavaScript (Vite se encarga de esto)
+    "noEmit": true,
+    
+    // Permite archivos TS y JS mixtos
+    "allowJs": true,
+    
+    // Configuración estricta de TypeScript
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    
+    // Configuración de tipos para React
+    "jsx": "react-jsx",
+    "types": ["vite/client"],
+    
+    // Configuración de paths (alias de importación)
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@/components/*": ["src/components/*"],
+      "@/hooks/*": ["src/hooks/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/types/*": ["src/types/*"],
+      "@/services/*": ["src/services/*"]
+    },
+    
+    // Configuración del compilador
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  
+  // Archivos y directorios a incluir
+  "include": [
+    "src/**/*",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "vite.config.ts"
+  ],
+  
+  // Archivos y directorios a excluir
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build"
+  ]
+}
