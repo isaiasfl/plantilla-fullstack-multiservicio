@@ -323,4 +323,26 @@ Si esta plantilla te fue útil, considera:
 
 ---
 
-**🚀 ¡Happy coding!**
+## 👨‍💻 Autor
+
+<div align="center">
+
+**Desarrollado con ❤️ por**
+
+[![GitHub](https://img.shields.io/badge/GitHub-isaiasfl-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/isaiasfl)
+
+**Isaías Fernández** | *Profesor de Desarrollo de Aplicaciones*
+
+[![Email](https://img.shields.io/badge/Email-ifernandez@ieshlanz.es-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:ifernandez@ieshlanz.es)
+
+</div>
+
+---
+
+<div align="center">
+
+**🚀 ¡Que disfrutes desarrollando!**
+
+*Esta plantilla ha sido creada para facilitar el aprendizaje y desarrollo de aplicaciones fullstack modernas.*
+
+</div>
